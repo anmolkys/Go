@@ -4,6 +4,8 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"strconv"
+	"strings"
 )
 
 const LoginToken string = "aghhgdfhfhf"
@@ -27,17 +29,31 @@ const LoginToken string = "aghhgdfhfhf"
 
 //		fmt.Print(LoginToken)
 //	}
+// func main() {
+// 	welcome := "Welcome "
+// 	fmt.Println(welcome)
+// 	reader := bufio.NewReader(os.Stdin)
+// 	fmt.Println("Enter rating: ")
+
+// 	//comma ok //err ok
+// 	//works as try //works as catch
+
+// 	input, _ := reader.ReadString('\n')
+// 	fmt.Println("Thanks for your rating", input)
+// 	fmt.Printf("Type of rating is %T \n", input)
+
 func main() {
-	welcome := "Welcome "
-	fmt.Println(welcome)
+	fmt.Println("Welcome to Pizza App")
+	fmt.Println("Rate our Pizza")
 	reader := bufio.NewReader(os.Stdin)
-	fmt.Println("Enter rating: ")
-
-	//comma ok //err ok
-	//works as try //works as catch
-
 	input, _ := reader.ReadString('\n')
-	fmt.Println("Thanks for your rating", input)
-	fmt.Printf("Type of rating is %T \n", input)
+	fmt.Println("Thanks for rating", input)
+	numRating, err := strconv.ParseFloat(strings.TrimSpace(input), 64)
+
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		fmt.Println("Added 1", numRating)
+	}
 
 }
